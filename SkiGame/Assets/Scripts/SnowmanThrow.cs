@@ -8,18 +8,19 @@ public class SnowmanThrow : MonoBehaviour
     public float throwDistance;
     public int throwSpeed;
     private bool justThown = false;
-
+    private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.Find("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       GameObject target = GameObject.Find("Player");
-       
+        if(Time.frameCount % 5 == 0) 
+            { 
        float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
 
         if (distanceToTarget < throwDistance&&justThown==false)
